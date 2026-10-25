@@ -1,0 +1,105 @@
+name: agrifober_resellers
+description: "Application mobile des revendeurs Agrifober."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  go_router: ^17.4.0
+  flutter_svg: ^2.3.0
+  fui_kit: ^2.1.0
+  flutter_form_builder: ^10.3.0+2
+  form_builder_validators: ^11.3.0
+  country_code_picker: ^3.4.1
+  url_launcher: ^6.3.2
+  share_plus: ^13.3.0
+  country_phone_validator: ^1.0.2
+  logger: ^2.6.0
+  equatable: ^2.0.8
+  dartz: ^0.10.1
+  pin_code_fields: ^9.3.0
+  dio: ^5.11.0
+  freezed_annotation: ^3.1.0
+  flutter_riverpod: ^3.0.0
+  riverpod_annotation: ^4.0.0
+  json_annotation: ^4.12.0
+  retrofit: ^4.9.2
+  skeletonizer: ^2.1.3
+  shared_preferences: ^2.5.5
+  cached_network_image: ^3.4.1
+  path_provider: ^2.1.5
+  package_info_plus: ^10.2.2
+
+# shared_preferences_android 2.5.0 moved to Pigeon JNI, which looks up a Kotlin
+# suspend method by its exact signature; R8 renames kotlin.coroutines in release
+# builds, so reading prefs throws NoSuchMethodError and the session is lost.
+# Lift this pin once a fixed release is out.
+dependency_overrides:
+  shared_preferences_android: 2.4.28
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.8
+  flutter_gen: ^5.15.0
+  flutter_gen_runner: ^5.15.0
+  riverpod_generator: ">=4.0.4 <4.0.6"
+  build_runner: ^2.15.1
+  freezed: ^3.2.5
+  json_serializable: ^6.14.1
+  retrofit_generator: ^10.2.8
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/fonts/roobert-pro/
+    - assets/splash/
+    - assets/images/
+    - assets/images/shared/
+    - assets/images/brand/
+    - assets/images/svg/
+  fonts:
+    - family: RoobertPRO
+      fonts:
+        - asset: assets/fonts/roobert-pro/RoobertPRO-Light.ttf
+          weight: 300
+        - asset: assets/fonts/roobert-pro/RoobertPRO-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/roobert-pro/RoobertPRO-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/roobert-pro/RoobertPRO-Bold.ttf
+          weight: 700
+
+# Same setup as bookify-client. White background: the Agrifober logo is
+# full-colour artwork on white, so a coloured background would frame it in a
+# white box. Web generation is off — the web build is a debugging aid only.
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/splash/app_icon.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/splash/app_icon_foreground.png"
+  # The designed foreground is already padded; a small extra inset keeps the
+  # emblem off the launcher mask's edge.
+  adaptive_icon_foreground_inset: 8
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+  color: "#FFFFFF"
+  image: assets/splash/splash.png
+  android_12:
+    color: "#FFFFFF"
+    image: assets/splash/splash_a12.png
